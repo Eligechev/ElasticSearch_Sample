@@ -34,7 +34,6 @@ namespace WebApplication1
         {
             if (!logger.IsDebugEnabled)
                 return;
-            /*
             MappedDiagnosticsContext.Clear();
             MappedDiagnosticsContext.Set("request.MediaType", request.MediaType);
             MappedDiagnosticsContext.Set("request.Host", request.Host.ToString());
@@ -44,8 +43,8 @@ namespace WebApplication1
             MappedDiagnosticsContext.Set("request.Path", request.Path.ToString());
             MappedDiagnosticsContext.Set("request.QueryString", request.QueryString.ToString());
             MappedDiagnosticsContext.Set("request.Accept", request.Accept);
-           */ 
-               logger.Debug("Request scheme: {Scheme}; method: {Method}; path: {Path}; query: {$QueryString} ; accept: {Accept}",
+
+               logger.Debug("TEXT MESSAGE Request scheme: {Scheme}; method: {Method}; path: {Path}; query: {$QueryString} ; accept: {Accept}",
                 request.Scheme,
                 request.Method,
                 request.Path,
