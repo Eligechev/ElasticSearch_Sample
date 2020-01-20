@@ -41,15 +41,16 @@ namespace WebApplication1
             MappedDiagnosticsContext.Set("request.Scheme", request.Scheme);
             MappedDiagnosticsContext.Set("request.Method", request.Method);
             MappedDiagnosticsContext.Set("request.Path", request.Path.ToString());
-            MappedDiagnosticsContext.Set("request.QueryString", request.QueryString.ToString());
+            MappedDiagnosticsContext.Set("request.IP", request.RemoteIpAddress.ToString());
             MappedDiagnosticsContext.Set("request.Accept", request.Accept);
 
-               logger.Debug("TEXT MESSAGE Request scheme: {Scheme}; method: {Method}; path: {Path}; query: {$QueryString} ; accept: {Accept}",
+               logger.Debug("TEXT MESSAGE Request scheme: {Scheme}; method: {Method}; path: {Path}; query: {$RemoteIP} ; accept: {Accept}, dateTime: {DateTime}",
                 request.Scheme,
                 request.Method,
                 request.Path,
                 request.RemoteIpAddress,
-                request.Accept);
+                request.Accept,
+                DateTime.Now);
            // logger.Debug(logMsg);
 
             MappedDiagnosticsContext.Clear();

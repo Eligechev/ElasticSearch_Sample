@@ -28,11 +28,12 @@ namespace WebApplication1
             }
             else
                 await Next.Invoke(context);
-
+            /*
             LogRequestResponseHelper.LogDebugResponse(Logger, context.Response);
             if (Logger.IsTraceEnabled
                 && !string.IsNullOrEmpty(context.Response.ContentType) && context.Response.ContentType.ToLower().StartsWith("application/json"))
                 LogRequestResponseHelper.LogTraceResponse(Logger, responseBody);
+            */
         }
 
         private class CaptureResponseBody : IDisposable
