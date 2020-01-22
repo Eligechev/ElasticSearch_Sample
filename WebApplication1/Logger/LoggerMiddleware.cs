@@ -6,15 +6,24 @@ using System.Web;
 using Microsoft.Owin;
 using System.Threading.Tasks;
 using NLog;
+using Serilog;
 namespace WebApplication1
 {
     public class LoggerMiddleware : OwinMiddleware
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
         public LoggerMiddleware(OwinMiddleware next) : base(next) {}
 
         public override async Task Invoke(IOwinContext context)
         {
+            //serilog-seq configuration
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo.Seq("http://localhost:5341")
+            .CreateLogger();
+
+            //END Serilog 
+
             LogRequestResponseHelper.LogDebugRequest(Logger, context.Request);
 
             var responseBody = "";
