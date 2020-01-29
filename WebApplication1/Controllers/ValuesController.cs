@@ -4,12 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApplication1;
 
 namespace WebApplication1.Controllers
 {
     public class ValuesController : ApiController
     {
         private List<string> _sampleList = new List<string>();
+        CollegeDbContext dbcontext = new CollegeDbContext();
 
         public List<string> SampleList {
             get
@@ -18,9 +20,9 @@ namespace WebApplication1.Controllers
             } 
         }
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Models.Model> Get()
         {
-            return new string[] { "value1", "value2" };
+            return dbcontext.Set<Models.Model>();
         }
 
         // GET api/values/5
@@ -33,7 +35,12 @@ namespace WebApplication1.Controllers
         public void Post([FromBody]string value)
         {
             _sampleList.Add(value);
-
+            dbcontext.Models.Add(new Models.Model
+            {
+                id = 1,
+                SampleString = value
+            });
+            dbcontext.SaveChanges();
 
         }
         // PUT api/values/5

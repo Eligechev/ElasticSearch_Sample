@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.Owin;
 using NLog;
 using Serilog;
+using Elasticsearch.Net;
 
 namespace WebApplication1
 {
